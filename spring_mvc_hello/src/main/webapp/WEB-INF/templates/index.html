@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+<h1>index</h1>
+<a th:href="@{/hello}">hello</a>
+<br>
+<a th:href="@{/rest/1}">rest</a>
+<br>
+<hr>
+<form th:action="@{/param/pojo}" method="post">
+    <label>
+        username:
+        <input type="text" name="username">
+    </label>
+    <label>
+        password:
+        <input type="password" name="password">
+    </label>
+    <input type="submit" name="submit">
+</form>
+
+<hr>
+<a th:href="@{/mav}">modelAndView</a><br>
+<a th:href="@{/model}">model</a><br>
+<a th:href="@{/modelMap}">modelMap</a><br>
+<a th:href="@{/map}">map</a><br>
+<a th:href="@{/session}">session</a><br>
+<a th:href="@{/application}">application</a><br>
+<a th:href="@{/thymeleaf}">thymeleafView</a><br>
+<a th:href="@{/forward}">forward</a><br>
+<a th:href="@{/redirect}">redirect</a><br>
+</body>
+</html>

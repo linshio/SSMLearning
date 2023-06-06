@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!--    <bean id="clazz" class="cn.linshio.pojo.Clazz">-->
+    <!--        <property name="id" value="01"/>-->
+    <!--        <property name="name" value="clazzOne"/>-->
+    <!--    </bean>-->
+
+    <bean id="student" class="cn.linshio.pojo.Student">
+        <property name="id" value="1"/>
+        <property name="name">
+            <value><![CDATA[<lingXi>]]></value>
+        </property>
+        <property name="gender" value="male"/>
+        <property name="age" value="22"/>
+        <property name="clazz">
+            <!--内部bean-->
+            <bean class="cn.linshio.pojo.Clazz">
+                <property name="name" value="ClazzOne"/>
+                <property name="id" value="01"/>
+            </bean>
+        </property>
+        <property name="teacherMap" ref="teacherMap"/>
+    </bean>
+
+    <bean id="teacherOne" class="cn.linshio.pojo.Teacher">
+        <property name="id" value="001"/>
+        <property name="name" value="az"/>
+    </bean>
+    <bean id="teacherTwo" class="cn.linshio.pojo.Teacher">
+        <property name="id" value="002"/>
+        <property name="name" value="za"/>
+    </bean>
+
+
+    <util:map id="teacherMap">
+        <entry key="001" value-ref="teacherOne"/>
+        <entry key="002" value-ref="teacherTwo"/>
+    </util:map>
+
+    <bean id="studentOne" class="cn.linshio.pojo.Student">
+        <property name="id" value="1"/>
+        <property name="name">
+            <value><![CDATA[<lingXi>]]></value>
+        </property>
+        <property name="gender" value="male"/>
+        <property name="age" value="22"/>
+        <property name="clazz">
+            <!--内部bean-->
+            <bean class="cn.linshio.pojo.Clazz">
+                <property name="name" value="ClazzOne"/>
+                <property name="id" value="01"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="studentTwo" class="cn.linshio.pojo.Student">
+        <property name="id" value="2"/>
+        <property name="name">
+            <value><![CDATA[<lingXi>]]></value>
+        </property>
+        <property name="gender" value="male"/>
+        <property name="age" value="22"/>
+        <property name="clazz">
+            <!--内部bean-->
+            <bean class="cn.linshio.pojo.Clazz">
+                <property name="name" value="ClazzOne"/>
+                <property name="id" value="01"/>
+            </bean>
+        </property>
+    </bean>
+
+    <!--标记一-->
+    <!--    <bean id="clazz" class="cn.linshio.pojo.Clazz">
+            <property name="id" value="01"/>
+            <property name="name" value="ClazzOne"/>
+            <property name="students">
+                <list>
+                    <ref bean="studentOne"/>
+                    <ref bean="studentTwo"/>
+                </list>
+            </property>
+         </bean>-->
+
+    <!--重写标记一中的内容-->
+    <bean id="clazz" class="cn.linshio.pojo.Clazz">
+        <property name="id" value="01"/>
+        <property name="name" value="ClazzOne"/>
+        <property name="students" ref="studentList"/>
+    </bean>
+
+    <util:list id="studentList">
+        <ref bean="studentOne"/>
+        <ref bean="studentTwo"/>
+    </util:list>
+
+    <!--构造器注入方式-->
+    <!--    <bean id="student" class="cn.linshio.pojo.Student">
+            <constructor-arg name="id" value="001"/>
+            <constructor-arg name="name" value="lingXi"/>
+            <constructor-arg name="age" value="22"/>
+            <constructor-arg name="gender" value="male"/>
+        </bean>-->
+
+
+</beans>

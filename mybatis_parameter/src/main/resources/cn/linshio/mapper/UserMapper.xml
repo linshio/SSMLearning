@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.linshio.mapper.UserMapper">
+    <select id="getUserByName" resultType="User">
+        select *
+        from t_user
+        where username = '${username}';
+    </select>
+    <select id="getUserForCheck" resultType="User">
+        select *
+        from t_user
+        where username = #{param1}
+          and password = #{param2};
+    </select>
+
+    <insert id="insertUser">
+        insert into t_user (id, username, password, age, gender, email)
+        values (null, #{username}, #{password}, #{age}, #{gender}, #{email});
+    </insert>
+
+    <select id="getUserByParam" resultType="cn.linshio.pojo.User">
+        select *
+        from t_user
+        where username = #{username}
+          and password = #{password};
+    </select>
+</mapper>

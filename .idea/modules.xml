@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/spring_annotation.iml" filepath="$PROJECT_DIR$/spring_annotation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_aop.iml" filepath="$PROJECT_DIR$/spring_aop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_hello.iml" filepath="$PROJECT_DIR$/spring_hello.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_ioc.iml" filepath="$PROJECT_DIR$/spring_ioc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_listener.iml" filepath="$PROJECT_DIR$/spring_listener.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_mvc_ajax.iml" filepath="$PROJECT_DIR$/spring_mvc_ajax.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_mvc_filter.iml" filepath="$PROJECT_DIR$/spring_mvc_filter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_mvc_hello.iml" filepath="$PROJECT_DIR$/spring_mvc_hello.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_mvc_rest.iml" filepath="$PROJECT_DIR$/spring_mvc_rest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_transaction.iml" filepath="$PROJECT_DIR$/spring_transaction.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ssm/ssm.iml" filepath="$PROJECT_DIR$/ssm/ssm.iml" />
+    </modules>
+  </component>
+</project>

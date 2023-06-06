@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.linshio.mapper.SpecialSQLMapper">
+    <select id="selectBySpecial" resultType="cn.linshio.pojo.User">
+        <!--        第一种方式
+                select *
+                from t_user
+                where username like '%${mohu}%';-->
+        <!--        第二种方式
+                select * from t_user
+                where username like "%"#{mohu}"%";-->
+        select * from t_user
+        where username like concat('%',#{mohu},'%');
+    </select>
+
+    <delete id="deleteMoreUser">
+        delete
+        from t_user
+        where id in (${ids});
+    </delete>
+
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="id">
+        insert into t_user (id, username, password, age, gender, email)
+        values (null, #{username}, #{password}, #{age}, #{gender}, #{email});
+    </insert>
+</mapper>

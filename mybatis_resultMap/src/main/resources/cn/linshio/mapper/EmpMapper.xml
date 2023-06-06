@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.linshio.mapper.EmpMapper">
+    <!--&lt;!&ndash;    &lt;!&ndash;参数名称不匹配的第一种解决方案&ndash;&gt;-->
+    <!--    <select id="getEmpById" resultType="Emp">-->
+    <!--&lt;!&ndash;        select emp_id empId,emp_name empName,age,gender-->
+    <!--        from t_emp-->
+    <!--        where emp_id = #{empId};&ndash;&gt;-->
+    <!--        select *-->
+    <!--        from t_emp-->
+    <!--        where emp_id = #{empId};-->
+    <!--    </select>&ndash;&gt;-->
+    <!--    &lt;!&ndash;参数名称不匹配的第二种解决方案：在配置文件中进行配置&ndash;&gt;-->
+
+    <!--    &lt;!&ndash;第三种解决方案：使用resultMap&ndash;&gt;-->
+    <!--    <resultMap id="empResultMap" type="Emp">-->
+    <!--        &lt;!&ndash;主键使用id，其他的字段使用result&ndash;&gt;-->
+    <!--        <id column="emp_id" property="empId"/>-->
+    <!--        <result column="emp_name" property="empName"/>-->
+    <!--    </resultMap>-->
+    <!--    <select id="getEmpById" resultMap="empResultMap">-->
+    <!--        &lt;!&ndash;        select emp_id empId,emp_name empName,age,gender-->
+    <!--                from t_emp-->
+    <!--                where emp_id = #{empId};&ndash;&gt;-->
+    <!--        select *-->
+    <!--        from t_emp-->
+    <!--        where emp_id = #{empId};-->
+    <!--    </select>-->
+
+
+    <!--    &lt;!&ndash;处理类中类与属性映射关系的三种方式&ndash;&gt;-->
+
+    <!--    <select id="getEmpAndDeptById" resultMap="getEmpAndDeptByEmpId">-->
+    <!--        select *-->
+    <!--        from t_emp left join t_dept on t_emp.dept_id = t_dept.dept_id-->
+    <!--        where t_emp.emp_id = #{empId};-->
+    <!--    </select>-->
+
+    <!--    &lt;!&ndash;one:创建联级映射&ndash;&gt;-->
+    <!--    <resultMap id="getEmpAndDeptByEmpIdOne" type="Emp">-->
+    <!--        <id column="emp_id" property="empId"/>-->
+    <!--        <result column="emp_name" property="empName"/>-->
+    <!--        <result column="dept_id" property="dept.deptId"/>-->
+    <!--        <result column="dept_name" property="dept.deptName"/>-->
+    <!--    </resultMap>-->
+
+    <!--    &lt;!&ndash;two:使用association处理多对一的映射关系&ndash;&gt;-->
+    <!--    <resultMap id="getEmpAndDeptByEmpId" type="Emp">-->
+    <!--        <id column="emp_id" property="empId"/>-->
+    <!--        <result column="emp_name" property="empName"/>-->
+    <!--        <result column="age" property="age"/>-->
+    <!--        <result column="gender" property="gender"/>-->
+    <!--        <association property="dept" javaType="Dept">-->
+    <!--            <id column="dept_id" property="deptId"/>-->
+    <!--            <result column="dept_name" property="deptName"/>-->
+    <!--        </association>-->
+    <!--    </resultMap>-->
+
+    <!--    &lt;!&ndash;three:分步查询&ndash;&gt;-->
+    <!--    <resultMap id="getEmpAndDeptByEmpIdStep" type="Emp">-->
+    <!--        <id column="emp_id" property="empId"/>-->
+    <!--        <result column="emp_name" property="empName"/>-->
+    <!--        <result column="age" property="age"/>-->
+    <!--        <result column="gender" property="gender"/>-->
+    <!--        <association property="dept"-->
+    <!--            select="cn.linshio.mapper.DeptMapper.getEmpAndDeptByStepTwo"-->
+    <!--            column="dept_id">-->
+    <!--        </association>-->
+    <!--    </resultMap>-->
+
+    <!--    <select id="getEmpAndDeptByStepOne" resultMap="getEmpAndDeptByEmpIdStep">-->
+    <!--        select *-->
+    <!--        from t_emp where emp_id = #{empId};-->
+    <!--    </select>-->
+
+    <!--    <select id="getDeptAndEmpByStepTwo" resultType="cn.linshio.pojo.Emp">-->
+    <!--        select *-->
+    <!--        from t_emp-->
+    <!--        where dept_id = #{deptId};-->
+    <!--    </select>-->
+</mapper>

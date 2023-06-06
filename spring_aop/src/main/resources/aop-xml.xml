@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <context:component-scan base-package="cn.linshio.aop.xml"/>
+
+    <aop:config>
+        <!--设置公共的切入点表达式-->
+        <aop:pointcut id="pointCut" expression="execution(* cn.linshio.aop.xml.CalculatorImpl.*(..))"/>
+        <!--将ioc容器中的某个bean设置为切面-->
+        <aop:aspect ref="loggerAspect">
+            <aop:before method="beforeMethodInform" pointcut-ref="pointCut"/>
+            <aop:after method="afterMethodInform" pointcut-ref="pointCut"/>
+            <aop:after-throwing method="afterExceptionMethodInform" pointcut-ref="pointCut" throwing="ex"/>
+            <aop:after-returning method="afterReturnMethodInform" pointcut-ref="pointCut" returning="result"/>
+            <aop:around method="aroundMethodInform" pointcut-ref="pointCut"/>
+        </aop:aspect>
+    </aop:config>
+</beans>
